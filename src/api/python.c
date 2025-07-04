@@ -1429,7 +1429,7 @@ void callPythonMenu(tic_mem* tic, s32 index, void* data) {
     if (!core->currentVM) 
         return;
 
-    if(pkpy_getglobal(core->currentVM, N.MENU)) return;
+    if(!pkpy_getglobal(core->currentVM, N.MENU)) return;
 
     pkpy_push_null(core->currentVM);
     pkpy_push_int(core->currentVM, index);
