@@ -112,7 +112,7 @@ jobs:
         shell: bash
         run: |
           cd build
-          cmake -G "MSYS Makefiles" -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -G "MSYS Makefiles" -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_WITH_RUBY=Off ..
           cmake --build . --parallel
 
   # === Ubuntu ===
@@ -260,7 +260,7 @@ jobs:
           cd vendor
           git clone --recursive https://github.com/smuehlst/circle-stdlib
           cd circle-stdlib
-          git checkout db053a32c165c1b22423a47ed6cb5bddc72b51f2
+          git checkout fdb3c4a948421d47fddab8042a92f980cba43915
           git submodule update --recursive
           ./configure -r 3
           make -j$(nproc)
@@ -321,7 +321,7 @@ jobs:
           cd vendor
           git clone --recursive https://github.com/smuehlst/circle-stdlib
           cd circle-stdlib
-          git checkout db053a32c165c1b22423a47ed6cb5bddc72b51f2
+          git checkout fdb3c4a948421d47fddab8042a92f980cba43915
           git submodule update --recursive
           ./configure -r 4
           make -j$(nproc)
@@ -383,7 +383,7 @@ jobs:
 
       - name: Build
         run: |
-          cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=$DEVKITPRO/cmake/3DS.cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_WITH_SCHEME=OFF -DBUILD_WITH_JS=OFF -DBUILD_WITH_PYTHON=OFF ..
+          cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=$DEVKITPRO/cmake/3DS.cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_WITH_SCHEME=OFF -DBUILD_WITH_JS=OFF -DBUILD_WITH_RUBY=OFF ..
           cmake --build build --parallel
 
       - name: Deploy
