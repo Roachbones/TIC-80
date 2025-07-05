@@ -527,6 +527,7 @@ jobs:
           cd build
           emcmake cmake -DBUILD_SDLGPU=On -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_LUA=OFF -DBUILD_WITH_PYTHON=ON -DTIC80_TARGET=tic80python .. --fresh
           cmake --build . --parallel
+          cp html/index.html bin/index.html
 
 
 
