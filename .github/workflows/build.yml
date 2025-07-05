@@ -516,9 +516,11 @@ jobs:
 
       - name: Build all
         run: |
+          emsdk install sdl2
+          emsdk activate sdl2
           cd build
           emcmake cmake -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=ON -DBUILD_PLAYER=ON -DBUILD_PRO=ON .. --fresh
-          cmake --build . --parallel
+          cmake --build .
           cp html/index.html bin/index.html
 
       - name: Deploy
