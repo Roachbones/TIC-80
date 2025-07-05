@@ -525,6 +525,9 @@ jobs:
       - name: Build python
         run: |
           cd build
+          apt-get update
+          apt-get install --assume-yes libsdl2-dev
+          embuilder build sdl2
           emcmake cmake -DBUILD_SDLGPU=On -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_LUA=OFF -DBUILD_WITH_PYTHON=ON -DBUILD_STUB=On -DBUILD_PLAYER=On -DTIC80_TARGET=tic80python -DBUILD_WITH_JANET=OFF .. --fresh
           cmake --build .
           cp html/index.html bin/index.html
