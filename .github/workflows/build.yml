@@ -26,7 +26,7 @@ jobs:
         run: |
           COPY /Y build\janet\janetconf.h vendor\janet\src\conf\janetconf.h
           cd build
-          cmake -G Visual Studio 17 2022" -A x64 -T v141_xp -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+          cmake -G Visual Studio 17 2022" -A x64 -T v141_xp -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On -DCMAKE_POLICY_VERSION_MINIMUM=3.5  ..
           cmake --build . --config MinSizeRel --parallel
 
       - name: Deploy
@@ -63,7 +63,7 @@ jobs:
         shell: cmd
         run: |
           cd build
-          cmake -G "Visual Studio 17 2022" -DBUILD_SDLGPU=On -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+          cmake -G "Visual Studio 17 2022" -DBUILD_SDLGPU=On -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
           cmake --build . --config MinSizeRel --parallel
 
       - name: Deploy
@@ -78,7 +78,7 @@ jobs:
         shell: cmd
         run: |
           cd build
-          cmake -G "Visual Studio 16 2019" -DBUILD_SDLGPU=On -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -G "Visual Studio 16 2019" -DBUILD_SDLGPU=On -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --config MinSizeRel --parallel
 
   # === Windows MinGW-64 ===
@@ -112,7 +112,7 @@ jobs:
         shell: bash
         run: |
           cd build
-          cmake -G "MSYS Makefiles" -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_WITH_RUBY=Off ..
+          cmake -G "MSYS Makefiles" -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On -DBUILD_WITH_RUBY=Off ..
           cmake --build . --parallel
 
   # === Ubuntu ===
@@ -139,7 +139,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --parallel
 
       - name: Deploy
@@ -153,7 +153,7 @@ jobs:
       - name: Build Pro
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --config MinSizeRel --parallel
 
   # === Ubuntu-arm64 ===
@@ -180,7 +180,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --parallel
 
       - name: Deploy
@@ -194,7 +194,7 @@ jobs:
       - name: Build Pro
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --config MinSizeRel --parallel
 
   # === Ubuntu gcc14 ===
@@ -222,7 +222,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --parallel
 
       - name: Deploy
@@ -236,7 +236,7 @@ jobs:
       - name: Build Pro
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --config MinSizeRel --parallel
 
   # === Raspberry PI 1-4 Bare Metal ===
@@ -275,7 +275,7 @@ jobs:
         run: |
           git apply build/baremetalpi/circle.patch
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=baremetalpi/toolchain.cmake -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=baremetalpi/toolchain.cmake -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           make tic80studio -j$(nproc)
           cd baremetalpi
           make -j$(nproc)
@@ -336,7 +336,7 @@ jobs:
         run: |
           git apply build/baremetalpi/circle.patch
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=baremetalpi/toolchain.cmake -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=baremetalpi/toolchain.cmake -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           make tic80studio -j$(nproc)
           cd baremetalpi
           make -j$(nproc)
@@ -383,7 +383,7 @@ jobs:
 
       - name: Build
         run: |
-          cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=$DEVKITPRO/cmake/3DS.cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_WITH_SCHEME=OFF -DBUILD_WITH_JS=OFF -DBUILD_WITH_RUBY=OFF -DBUILD_WITH_MRUBY=OFF -DBUILD_WITH_JANET=OFF ..
+          cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=$DEVKITPRO/cmake/3DS.cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On -DBUILD_WITH_SCHEME=OFF -DBUILD_WITH_JS=OFF -DBUILD_WITH_RUBY=OFF -DBUILD_WITH_MRUBY=OFF -DBUILD_WITH_JANET=OFF ..
           cmake --build build --parallel
 
       - name: Deploy
@@ -408,7 +408,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_STATIC=ON -DBUILD_SDLGPU=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_STATIC=ON -DBUILD_SDLGPU=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --parallel
 
       - name: Deploy
@@ -422,7 +422,7 @@ jobs:
       - name: Build Pro
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --parallel
 
   # === MacOS 14 / arm64 ===
@@ -441,7 +441,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_STATIC=ON -DBUILD_SDLGPU=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_STATIC=ON -DBUILD_SDLGPU=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --parallel
 
       - name: Deploy
@@ -455,7 +455,7 @@ jobs:
       - name: Build Pro
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On ..
           cmake --build . --parallel
 
   # === Android ===
@@ -577,13 +577,13 @@ jobs:
       - name: Build python
         run: |
           cd build
-          emcmake cmake -DBUILD_SDLGPU=On -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_LUA=OFF -DBUILD_WITH_PYTHON=ON -DTIC80_TARGET=tic80python .. --fresh
+          emcmake cmake -DBUILD_SDLGPU=On -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_LUA=OFF -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On -DTIC80_TARGET=tic80python .. --fresh
           cmake --build . --parallel
 
       - name: Build all
         run: |
           cd build
-          emcmake cmake -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On .. --fresh
+          emcmake cmake -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_ALL=Off -DBUILD_WITH_PYTHON=On -DBUILD_STUB=On .. --fresh
           cmake --build . --parallel
           cp html/index.html bin/index.html
 
