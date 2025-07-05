@@ -26,7 +26,7 @@
 #include "version.h"
 
 #if defined(TIC80_PRO)
-#define TIC_VERSION_POST " Pro"
+#define TIC_VERSION_POST " pona"
 #else
 #define TIC_VERSION_POST ""
 #endif
@@ -38,7 +38,7 @@
 #define TIC_TITLE TIC_NAME_FULL " " TIC_VERSION
 #define TIC_HOST "localhost"
 #define TIC_WEBSITE "http://" TIC_HOST
-#define TIC_COPYRIGHT TIC_WEBSITE " (C) 2017-" TIC_VERSION_YEAR
+#define TIC_COPYRIGHT "https://tic80.com (C) 2017-" TIC_VERSION_YEAR
 
 #define TICNAME_MAX 256
 

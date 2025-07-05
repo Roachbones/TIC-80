@@ -145,7 +145,7 @@ void initStart(Start* start, Studio* studio, const char* cart)
     {
         "",
         " " TIC_NAME_FULL,
-        " version " TIC_VERSION,
+        " nanpa " TIC_VERSION,
         " " TIC_COPYRIGHT,
     };
 
