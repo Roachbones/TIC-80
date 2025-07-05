@@ -99,8 +99,8 @@ static void optionFullscreenSet(void* data, s32 pos)
     tic_sys_fullscreen_set(main->options->fullscreen = (pos == 1));
 }
 
-static const char OffValue[] =  "OFF";
-static const char OnValue[] =   "ON";
+static const char OffValue[] =  "ALA";
+static const char OnValue[] =   "LON";
 
 static MenuOption FullscreenOption = 
 {
@@ -241,7 +241,7 @@ static void optionTabModeSet(void* data, s32 pos)
 
 static MenuOption TabModeOption =
 {
-    OPTION_VALUES({"AUTO", "TABS", "SPACES"}),
+    OPTION_VALUES({"pona", "Tab", "Space"}),
     optionTabModeGet,
     optionTabModeSet,
 };
@@ -261,7 +261,7 @@ static void optionKeybindModeSet(void* data, s32 pos)
 
 static MenuOption KeybindModeOption = 
 {
-    OPTION_VALUES({"STANDARD", "EMACS", "VI"}),
+    OPTION_VALUES({"ike ala", "EMACS", "VI"}),
     optionKeybindModeGet,
     optionKeybindModeSet,
 };
@@ -321,21 +321,21 @@ enum
 static const MenuItem OptionMenu[] =
 {
 #if defined(CRT_SHADER_SUPPORT)
-    {"CRT MONITOR",     NULL,   &CrtMonitorOption},
+    {"lukin nasa",          NULL,   &CrtMonitorOption},
 #endif
 #if defined(BUILD_EDITORS)
-    {"DEV MODE",        NULL,   &DevModeOption, "The game menu is disabled in dev mode."},
+    {"nasin pi ilo lawa",   NULL,   &DevModeOption, "nasin ni la nena Esc li kama e nimi lawa"},
 #endif
-    {"VSYNC",           NULL,   &VSyncOption, "VSYNC needs restart!"},
-    {"FULLSCREEN",      NULL,   &FullscreenOption},
-    {"INTEGER SCALE",   NULL,   &IntegerScaleOption},
-    {"VOLUME",          NULL,   &VolumeOption},
+    {"nasin VSYNC",              NULL,   &VSyncOption, "ante ni li wile e open sin"},
+    {"lukin ale",                NULL,   &FullscreenOption},
+    {"nasin lukin INTEGER SCALE", NULL,   &IntegerScaleOption},
+    {"suli kalama",         NULL,   &VolumeOption},
 #if defined(BUILD_EDITORS)
-    {"EDITOR OPTIONS", showEditorMenu},
+    {"o ante e ilo pali",    showEditorMenu},
 #endif
-    {"SETUP GAMEPAD",       showGamepadMenu},
+    {"ilo GAMEPAD",         showGamepadMenu},
     {""},
-    {"BACK",            showMainMenu, .back = true},
+    {"pona",                showMainMenu, .back = true},
 };
 
 static void showOptionsMenu(void* data, s32 pos);
@@ -358,11 +358,11 @@ enum
 
 static const MenuItem EditorMenu[] =
 {
-    {"TAB SIZE",          NULL,   &TabSizeOption,     "Indentation is your friend"},
-    {"TAB MODE",          NULL,   &TabModeOption,     "Auto uses spaces for python/moonscript"},
-    {"KEYBIND MODE",      NULL,   &KeybindModeOption, "For the cool kids only"},
+    {"suli pi nimi Tab",        NULL,   &TabSizeOption,     "nimi Tab li suli seme?"},
+    {"nasin pi nimi Tab",       NULL,   &TabModeOption,     "toki Python/Moonscript la nimi Tab li seme"},
+    {"nasin KEYBIND MODE",      NULL,   &KeybindModeOption, "nasin pi jan wawa taso"},
     {""},
-    {"BACK",            showOptionsMenu, .back = true},
+    {"pona",                    showOptionsMenu, .back = true},
 };
 
 static void showEditorMenu(void* data, s32 pos)
@@ -476,15 +476,15 @@ enum MainMenu
 
 static const MenuItem MainMenu[] =
 {
-    {"GAME MENU",   showGameMenu},
-    {"RESUME GAME", onResumeGame},
-    {"RESET GAME",  onResetGame},
+    {"ante musi",       showGameMenu},
+    {"o awen musi",         onResumeGame},
+    {"o open sin musi",     onResetGame},
 #if defined(BUILD_EDITORS)
-    {"CLOSE GAME",  onExitGame},
+    {"o pini musi",         onExitGame},
 #endif
-    {"OPTIONS",     showOptionsMenu},
+    {"ante",                showOptionsMenu},
     {""},
-    {"QUIT TIC-80", onExitStudio},
+    {"o pini e ilo TIC-80", onExitStudio},
 };
 
 static void showMainMenu(void* data, s32 pos)
@@ -551,12 +551,12 @@ static void assignMapping(void* data, s32 pos)
 
     main->gamepads.key = pos - GamepadMenu_Gamepad0;
 
-    static const char Fmt[] = "to assign to (%s) button...";
+    static const char Fmt[] = "sina lawa e nena (%s) la...";
     static char str[sizeof Fmt + STRLEN("RIGHT")];
 
     static const MenuItem AssignKeyMenu[] =
     {
-        {"Please, press a key you want"},
+        {"o luka e nena pi wile sina"},
         {str},
     };
 
@@ -640,10 +640,10 @@ static void initGamepadMenu(StudioMainMenu* main)
         {MappingItems[7], assignMapping},
 
         {""},
-        {"SAVE MAPPING",        saveGamepadMenu},
-        {"CLEAR MAPPING",       clearGamepadMenu},
-        {"RESET TO DEFAULTS",   resetGamepadMenu},
-        {"BACK",                showOptionsMenu, .back = true},
+        {"o awen e nasin",        saveGamepadMenu},
+        {"o weka e nasin",        clearGamepadMenu},
+        {"o sin",                 resetGamepadMenu},
+        {"pona",                  showOptionsMenu, .back = true},
     };
 
     initGamepadButtons(main);

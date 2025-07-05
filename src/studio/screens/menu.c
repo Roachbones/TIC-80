@@ -162,7 +162,7 @@ static void drawBottomBar(Menu* menu, s32 x, s32 y)
     const char* help = menu->items[menu->pos].help;
     if(help)
     {
-        if(menu->ticks % TIC80_FRAMERATE < TIC80_FRAMERATE / 2)
+        //if(menu->ticks % TIC80_FRAMERATE < TIC80_FRAMERATE / 2) // Don't blink help text
             printShadow(tic, help, x + (TIC80_WIDTH - strlen(help) * TIC_FONT_WIDTH) / 2 + menu->anim.offset,
                 y + TextMargin, tic_color_white);
     }
