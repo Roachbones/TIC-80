@@ -34,7 +34,7 @@ jobs:
         with:
           name: "tic80-winxp"
           path: |
-            build/bin/tic80.exe
+            build/bin/*.exe
             build/bin/*.dll
 
       - name: Build Pro
@@ -71,7 +71,7 @@ jobs:
         with:
           name: "tic80-windows"
           path: |
-            build/bin/tic80.exe
+            build/bin/*.exe
             build/bin/*.dll
 
       - name: Build Pro
@@ -416,7 +416,7 @@ jobs:
         with:
           name: "tic80-macos"
           path: |
-            build/bin/tic80
+            build/bin/tic80*
             build/bin/*.dylib
 
       - name: Build Pro
@@ -449,7 +449,7 @@ jobs:
         with:
           name: "tic80-macos-arm64"
           path: |
-            build/bin/tic80
+            build/bin/tic80*
             build/bin/*.dylib
 
       - name: Build Pro
