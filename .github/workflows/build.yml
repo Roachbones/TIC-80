@@ -77,7 +77,48 @@ jobs:
           cmake -G "MSYS Makefiles" -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_ALL=ON ..
           cmake --build . --parallel
 
-  # === Ubuntu ===
+  # === Ubuntu20 gcc 12===
+  linux-gcc12-glibc231:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+
+      - name: Install
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-12 g++-12 libglu1-mesa-dev libasound2-dev libpulse-dev libaudio-dev libsamplerate0-dev libcurl4-openssl-dev -y
+          sudo ln -s -f /usr/bin/gcc-12 /usr/bin/gcc
+          sudo ln -s -f /usr/bin/g++-12 /usr/bin/g++
+          
+      - name: Build
+        run: |
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=ON ..
+          cmake --build . --parallel
+
+      - name: Deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: "tic80-linux-gcc12-glibc231"
+          path: |
+            build/bin/tic80
+            build/bin/*.so
+
+      - name: Build Pro
+        run: |
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=ON ..
+          cmake --build . --config MinSizeRel --parallel
+  
+  # === Ubuntu22 gcc12===
   linux-gcc12-glibc235:
     runs-on: ubuntu-22.04
 
@@ -107,7 +148,7 @@ jobs:
       - name: Deploy
         uses: actions/upload-artifact@v4
         with:
-          name: "tic80-linux-gcc12"
+          name: "tic80-linux-gcc12-glibc235"
           path: |
             build/bin/tic80
             build/bin/*.so
@@ -148,7 +189,7 @@ jobs:
       - name: Deploy
         uses: actions/upload-artifact@v4
         with:
-          name: "tic80-linux-arm64-gcc12"
+          name: "tic80-linux-arm64-gcc12-glibc235"
           path: |
             build/bin/tic80
             build/bin/*.so
