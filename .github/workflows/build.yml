@@ -79,7 +79,7 @@ jobs:
 
   # === Ubuntu20 gcc 12===
   linux-gcc12-glibc231:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container: ubuntu:20.04
     steps:
       - uses: actions/checkout@v4
