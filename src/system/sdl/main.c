@@ -201,7 +201,7 @@ static struct
 #endif
 ;
 
-#if defined(__RPI__)
+//#if defined(__RPI__)
 
 // !TODO: update SDL to 2.0.14 on RPI docker to support these functions
 SDL_bool SDL_GameControllerHasAxis(SDL_GameController *gamecontroller, SDL_GameControllerAxis axis)
@@ -214,7 +214,7 @@ SDL_bool SDL_GameControllerHasButton(SDL_GameController *gamecontroller, SDL_Gam
     return SDL_TRUE;
 }
 
-#endif
+//#endif
 
 static void destoryTexture(Texture texture)
 {
