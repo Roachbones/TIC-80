@@ -479,7 +479,7 @@ jobs:
       - name: Build lua
         run: |
           cd build
-          apt install libsdl2-dev libsdl2-2.0-0 -y
+          sudo apt install libsdl2-dev libsdl2-2.0-0 -y
           emcmake cmake -DBUILD_SDLGPU=On -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_LUA=ON -DTIC80_TARGET=tic80lua -DBUILD_PLAYER=On .. --fresh
           cmake --build . --parallel
       
