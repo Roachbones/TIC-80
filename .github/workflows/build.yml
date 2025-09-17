@@ -494,7 +494,7 @@ jobs:
           cd build
           emcmake cmake -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_WITH_ALL=ON -DBUILD_PLAYER=On .. --fresh
           cmake --build . --parallel
-          cp html/index.html bin/index.html
+          cp html/export.html bin/index.html
 
       - name: Deploy
         uses: actions/upload-artifact@v4
