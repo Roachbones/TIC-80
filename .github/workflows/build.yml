@@ -78,7 +78,7 @@ jobs:
           cmake --build . --parallel
 
   # === Ubuntu ===
-  linux-gcc12-glibc235:
+  linux-gcc12-glibc235-Ubuntu22:
     runs-on: ubuntu-22.04
 
     steps:
@@ -101,7 +101,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_PLAYER=On -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=ON -DBUILD_PRO=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_PLAYER=On -DBUILD_EDITORS=Off -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=ON -DBUILD_PRO=On ..
           cmake --build . --parallel
 
       - name: Deploy
