@@ -31,7 +31,7 @@
 #define DEFAULT_VSYNC 1
 #endif
 
-#if defined(__TIC_ANDROID__)
+#if defined(__TIC_ANDROID__) || defined(__EMSCRIPTEN__)
 #define INTEGER_SCALE_DEFAULT false
 #else
 #define INTEGER_SCALE_DEFAULT true
