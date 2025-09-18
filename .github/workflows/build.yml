@@ -117,6 +117,14 @@ jobs:
           cd build
           cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=ON -DBUILD_EDITORS=On ..
           cmake --build . --config MinSizeRel --parallel
+      
+      - name: Deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: "tic80-Ubuntu22-Pro-Localhost"
+          path: |
+            build/bin/tic80
+            build/bin/*.so
 
   # === Ubuntu-arm64 ===
   linux-arm64-gcc12-glibc235:
