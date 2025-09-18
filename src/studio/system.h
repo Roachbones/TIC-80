@@ -37,11 +37,7 @@
 #define TIC_NAME_FULL TIC_NAME " tiny computer"
 #define TIC_TITLE TIC_NAME_FULL " " TIC_VERSION
 #define TIC_HOST "localhost"
-#if defined(__TIC_WIN7__)
     #define TIC_WEBSITE_PROTOCOL "http://"
-#else
-    #define TIC_WEBSITE_PROTOCOL "https://"
-#endif
 #define TIC_WEBSITE TIC_WEBSITE_PROTOCOL TIC_HOST
 #define TIC_COPYRIGHT TIC_WEBSITE " (C) 2017-" TIC_VERSION_YEAR
 
