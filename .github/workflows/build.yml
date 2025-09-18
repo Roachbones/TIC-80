@@ -101,7 +101,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_PLAYER=On -DBUILD_EDITORS=Off -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=ON -DBUILD_PRO=On ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_PLAYER=On -DBUILD_EDITORS=Off -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=ON ..
           cmake --build . --parallel
 
       - name: Deploy
