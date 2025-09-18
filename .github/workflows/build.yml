@@ -115,7 +115,7 @@ jobs:
       - name: Build Pro
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=ON ..
+          cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=ON -DBUILD_EDITORS=On ..
           cmake --build . --config MinSizeRel --parallel
 
   # === Ubuntu-arm64 ===
