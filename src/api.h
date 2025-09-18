@@ -547,6 +547,17 @@ enum
         tic_mem*)                                                                                                       \
                                                                                                                         \
                                                                                                                         \
+    macro(vivtest,                                                                                                      \
+        "vivtest() -> 4",                                                                                               \
+                                                                                                                        \
+        "Just returns the number 4.",                                                                                   \
+        0,                                                                                                              \
+        0,                                                                                                              \
+        0,                                                                                                              \
+        s32,                                                                                                            \
+        tic_mem*)                                                                                                       \
+                                                                                                                        \
+                                                                                                                        \
     macro(exit,                                                                                                         \
         "exit()",                                                                                                       \
                                                                                                                         \

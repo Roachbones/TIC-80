@@ -247,6 +247,12 @@ s32 tic_api_tstamp(tic_mem* memory)
     return (s32)time(NULL);
 }
 
+s32 tic_api_vivtest(tic_mem* memory)
+{
+    tic_core* core = (tic_core*)memory;
+    return (s32)4;
+}
+
 static void updateSaveid(tic_mem* memory)
 {
     memset(memory->saveid, 0, sizeof memory->saveid);

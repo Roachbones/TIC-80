@@ -1462,6 +1462,16 @@ static s32 lua_tstamp(lua_State *lua)
     return 1;
 }
 
+static s32 lua_vivtest(lua_State *lua)
+{
+    tic_core* core = getLuaCore(lua);
+    tic_mem* tic = (tic_mem*)core;
+
+    lua_pushnumber(lua, core->api.vivtest(tic));
+
+    return 1;
+}
+
 static s32 lua_exit(lua_State *lua)
 {
     tic_core* core = getLuaCore(lua);
