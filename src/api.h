@@ -547,14 +547,27 @@ enum
         tic_mem*)                                                                                                       \
                                                                                                                         \
                                                                                                                         \
-    macro(vivtest,                                                                                                      \
-        "vivtest() -> 4",                                                                                               \
+    macro(httpreq,                                                                                                      \
+        "httpreq(url)",                                                                                                 \
                                                                                                                         \
-        "Just returns the number 4.",                                                                                   \
+        "Initiates a GET request to the provided URL.\n"                                                                \
+        "Listen for a response with httplisten().",                                                                     \
+        1,                                                                                                              \
+        1,                                                                                                              \
+        0,                                                                                                              \
+        void,                                                                                                           \
+        tic_mem*, const char* url)                                                                                      \
+                                                                                                                        \
+                                                                                                                        \
+    macro(httplisten,                                                                                                   \
+        "httplisten() -> response (max 1024 bytes)",                                                                    \
+                                                                                                                        \
+        "Returns the latest response from httpreq(url), if one was received.\n"                                         \
+        "Otherwise returns an empty string.",                                                                           \
         0,                                                                                                              \
         0,                                                                                                              \
         0,                                                                                                              \
-        s32,                                                                                                            \
+        u8*,                                                                                                            \
         tic_mem*)                                                                                                       \
                                                                                                                         \
                                                                                                                         \

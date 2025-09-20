@@ -43,6 +43,9 @@
 
 #include "blip_buf.h"
 
+
+#include "studio/net.h"
+
 static_assert(TIC_BANK_BITS == 3,                   "tic_bank_bits");
 static_assert(sizeof(tic_map) < 1024 * 32,          "tic_map");
 static_assert(sizeof(tic_rgb) == 3,                 "tic_rgb");
@@ -247,10 +250,49 @@ s32 tic_api_tstamp(tic_mem* memory)
     return (s32)time(NULL);
 }
 
-s32 tic_api_vivtest(tic_mem* memory)
+
+#define HTTP_MAX_RESPONSE_LEN 1024
+u8 last_response[HTTP_MAX_RESPONSE_LEN];
+
+bool mailbox_flag;
+tic_net* net;
+
+static void onGet(const net_get_data* data)
+{    
+    switch(data->type)
+    {
+    case net_get_done:
+        {
+            mailbox_flag = true;
+            snprintf(last_response, HTTP_MAX_RESPONSE_LEN, "%s", data->done.data);
+        }
+        break;
+    default:
+        
+    }
+}
+
+void tic_api_httpreq(tic_mem* memory, const char* url)
 {
     tic_core* core = (tic_core*)memory;
-    return (s32)4;
+    
+    if (net) tic_net_close(net);
+    net = tic_net_create("");
+    
+    tic_net_get(net, url, onGet, core );
+}
+
+u8* tic_api_httplisten(tic_mem* memory)
+{
+    tic_core* core = (tic_core*)memory;
+    if (net) tic_net_end(net);
+    if (mailbox_flag) {
+        mailbox_flag = false;
+        return last_response;
+    }
+    else {
+        return NULL;
+    }
 }
 
 static void updateSaveid(tic_mem* memory)

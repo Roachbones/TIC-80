@@ -1462,12 +1462,38 @@ static s32 lua_tstamp(lua_State *lua)
     return 1;
 }
 
-static s32 lua_vivtest(lua_State *lua)
+static s32 lua_httpreq(lua_State *lua)
 {
     tic_core* core = getLuaCore(lua);
     tic_mem* tic = (tic_mem*)core;
+    
+    s32 top = lua_gettop(lua);
+    
+    if (top != 1) {
+        luaL_error(lua, "invalid params, httpreq(url)\n");
+        return 0;
+    }
+    
+    const char* text = printString(lua, 1);
 
-    lua_pushnumber(lua, core->api.vivtest(tic));
+    core->api.httpreq(tic, text);
+
+    return 0;
+}
+
+static s32 lua_httplisten(lua_State *lua)
+{
+    tic_core* core = getLuaCore(lua);
+    tic_mem* tic = (tic_mem*)core;
+    
+    const char* res = core->api.httplisten(tic);
+    
+    if (res == NULL) {
+        lua_pushstring(lua, "");
+        return 1;
+    }
+    
+    lua_pushstring(lua, res);
 
     return 1;
 }
