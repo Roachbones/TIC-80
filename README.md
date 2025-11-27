@@ -7,3 +7,4 @@
 - Replace icon for Linux executable: build/linux/tic80.png
 - Replace icon for Windows executable: build/windows/icon.ico
 - Replace icon for 3ds executable: build/n3ds/icon.ico
+- Tiny edits to webpage; mostly just change `- CLICK TO PLAY -` to `- musi -`: build/html/export.html
