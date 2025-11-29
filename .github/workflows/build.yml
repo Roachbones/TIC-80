@@ -160,7 +160,7 @@ jobs:
           cmake --build . --config MinSizeRel --parallel
 
   # === Ubuntu gcc14 ===
-  linux-gcc14-glibc239:
+  linux-gcc14-glibc239-Pro-localhost:
     runs-on: ubuntu-24.04
 
     steps:
@@ -184,7 +184,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=ON ..
+          cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_PRO=On -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=ON ..
           cmake --build . --parallel
 
       - name: Deploy
