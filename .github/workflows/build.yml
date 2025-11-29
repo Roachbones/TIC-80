@@ -1,6 +1,6 @@
 name: Build
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 # as recommended by: https://github.com/actions/checkout/issues/1590
 env:
